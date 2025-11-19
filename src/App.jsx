@@ -628,7 +628,23 @@ const AdminLogin = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen bg-black bg-opacity-20 flex items-center justify-center p-4">
+    <div className="font-inter text-white min-h-screen relative">
+      {/* Vídeo de fundo */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed top-0 left-0 w-full h-full object-cover z-0"
+      >
+        <source src="/background-video.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Overlay claro para melhorar legibilidade sem esconder o vídeo */}
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-20 z-10"></div>
+      
+      {/* Conteúdo sobre o vídeo */}
+      <div className="relative z-20 min-h-screen flex items-center justify-center p-4">
       <div className="bg-black bg-opacity-30 backdrop-blur-md p-8 rounded-lg shadow-xl w-full max-w-md">
         <div className="text-center mb-6">
           <Lock className="h-12 w-12 text-white mx-auto mb-4" />
@@ -638,7 +654,7 @@ const AdminLogin = ({ onLogin }) => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Usuário</label>
+            <label className="block text-sm font-medium text-white mb-2">Usuário</label>
             <input
               type="text"
               value={credentials.username}
@@ -650,20 +666,20 @@ const AdminLogin = ({ onLogin }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Senha</label>
+            <label className="block text-sm font-medium text-white mb-2">Senha</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={credentials.password}
                 onChange={(e) => setCredentials({...credentials, password: e.target.value})}
-                className="w-full bg-gray-700 text-white border-gray-600 rounded-lg p-3 pr-10 focus:ring-white focus:border-white"
+                className="w-full bg-black bg-opacity-40 backdrop-blur-sm text-white border-white border-opacity-30 rounded-lg p-3 pr-10 focus:ring-white focus:border-white"
                 placeholder="Digite sua senha"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-gray-400 hover:text-white"
+                className="absolute right-3 top-3 text-white hover:text-white"
               >
                 <Eye className="h-5 w-5" />
               </button>
@@ -691,7 +707,7 @@ const AdminLogin = ({ onLogin }) => {
             )}
           </button>
         </form>
-
+      </div>
       </div>
     </div>
   );
@@ -5994,10 +6010,27 @@ await setDoc(bookingRef, bookingData);
   // Tela de loading enquanto Firebase carrega
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-black bg-opacity-20 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-white text-lg">Conectando ao servidor...</p>
+      <div className="font-inter text-white min-h-screen relative">
+        {/* Vídeo de fundo */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="fixed top-0 left-0 w-full h-full object-cover z-0"
+        >
+          <source src="/background-video.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Overlay claro para melhorar legibilidade sem esconder o vídeo */}
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-20 z-10"></div>
+        
+        {/* Conteúdo sobre o vídeo */}
+        <div className="relative z-20 min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+            <p className="text-white text-lg">Conectando ao servidor...</p>
+          </div>
         </div>
       </div>
     );
@@ -6190,16 +6223,33 @@ await setDoc(bookingRef, bookingData);
 
   if (error) {
     return (
-      <div className="font-inter bg-black bg-opacity-20 text-white min-h-screen flex items-center justify-center">
-        <div className="text-center p-8">
-          <h1 className="text-2xl font-bold text-red-500 mb-4">Erro no Sistema</h1>
-          <p className="text-gray-300 mb-4">{error}</p>
-          <button 
-            onClick={() => window.location.reload()}
-            className="bg-white text-gray-900 font-bold py-2 px-6 rounded-lg hover:bg-gray-100"
-          >
-            Recarregar Página
-          </button>
+      <div className="font-inter text-white min-h-screen relative">
+        {/* Vídeo de fundo */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="fixed top-0 left-0 w-full h-full object-cover z-0"
+        >
+          <source src="/background-video.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Overlay claro para melhorar legibilidade sem esconder o vídeo */}
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-20 z-10"></div>
+        
+        {/* Conteúdo sobre o vídeo */}
+        <div className="relative z-20 min-h-screen flex items-center justify-center">
+          <div className="text-center p-8">
+            <h1 className="text-2xl font-bold text-red-500 mb-4">Erro no Sistema</h1>
+            <p className="text-white mb-4">{error}</p>
+            <button 
+              onClick={() => window.location.reload()}
+              className="bg-white text-gray-900 font-bold py-2 px-6 rounded-lg hover:bg-gray-100"
+            >
+              Recarregar Página
+            </button>
+          </div>
         </div>
       </div>
     );
